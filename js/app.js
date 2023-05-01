@@ -337,13 +337,6 @@ right_scroll.addEventListener('click', () => {
     pop_song.scrollLeft += 330;
 })
 
-// left_scroll.addEventListener('click', () => {
-//     pop_song.scrollLeft -= 100;
-// })
-// right_scroll.addEventListener('click', () => {
-//     pop_song.scrollLeft += 100;
-// })
-
 
 //Function to handle the add button click event
 const addButton = document.getElementById('addButton');
@@ -473,10 +466,28 @@ addButton.addEventListener('click', () => {
                     e.target.classList.remove('fa-pause');
                     e.target.classList.add('fa-play');
                 });
+//                  if (music.paused || music.currentTime <= 0) {
+//                     // Play the selected song
+//                     poster_master_play.src = poster;
+//                     music.play();
+
+//                     let song_title = songs.filter((ele) => {
+//                         return ele.id == index;
+//                     });
+
+//                     song_title.forEach(ele => {
+//                         let {
+//                             songName
+//                         } = ele;
+//                         title.innerHTML = songName;
+//                     });
+
+//                 }    
             });
         });
         reader.readAsDataURL(file);
     });
+        
     fileInput.click();
 });
 
