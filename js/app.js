@@ -61,14 +61,17 @@ Array.from(document.getElementsByClassName('songItem')).forEach((element, i) => 
 let masterPlay = document.getElementById('masterPlay');
 
 masterPlay.addEventListener('click', () => {
-    if (music.paused || music.currentTime <= 0) {
+    if (music.paused || music.currentTime <= 0) 
+    {
         music.play();
         masterPlay.classList.remove('fa-play');
         masterPlay.classList.add('fa-pause');
 
         document.getElementById(`${index}`).classList.remove('fa-play');
         document.getElementById(`${index}`).classList.add('fa-pause');
-    } else {
+    } 
+    else
+    {
         music.pause();
         masterPlay.classList.add('fa-play');
         masterPlay.classList.remove('fa-pause');
@@ -81,7 +84,8 @@ masterPlay.addEventListener('click', () => {
 
 /* ------------------- Set all play icons to 'play' state -------------------*/
 const makeAllPlays = () => {
-    Array.from(document.getElementsByClassName('play-button')).forEach((element) => {
+    Array.from(document.getElementsByClassName('play-button')).forEach((element) =>
+    {
         element.classList.add('fa-play');
         element.classList.remove('fa-pause');
     })
@@ -92,19 +96,23 @@ let index = 0;
 let poster_master_play = document.getElementById('poster_master_play');
 let title = document.getElementById('title');
 
+
 // Function to handle the song selection and play
 Array.from(document.getElementsByClassName('play-button')).forEach((element) => {
     element.addEventListener('click', (e) => {
         index = e.target.id;
         makeAllPlays();
+            
         e.target.classList.remove('fa-play');
         e.target.classList.add('fa-pause');
 
-        if (music.paused || music.currentTime <= 0) {
+        if (music.paused || music.currentTime <= 0)
+        {
             // Play the selected song
             music.src = `audio/${index}.mp3`;
             poster_master_play.src = `img/${index}.jpg`;
             music.play();
+                
             let song_title = songs.filter((ele) => {
                 return ele.id == index;
             });
@@ -129,6 +137,7 @@ Array.from(document.getElementsByClassName('play-button')).forEach((element) => 
             music.src = `audio/${index}.mp3`;
             poster_master_play.src = `img/${index}.jpg`;
             music.play();
+                 
             let song_title = songs.filter((ele) => {
                 return ele.id == index;
             });
@@ -183,6 +192,7 @@ music.addEventListener('timeupdate', () => {
 
     let min1 = Math.floor(music_curr / 60);
     let sec1 = Math.floor(music_curr % 60);
+        
     if (sec1 < 10) {
         sec1 = `0${sec1}`
     }
@@ -215,12 +225,14 @@ let vol_bar = document.getElementsByClassName('vol_bar')[0];
 
 // VOLUME
 vol.addEventListener('change', () => {
-    if (vol.value == 0) {
+    if (vol.value == 0) 
+    {
         vol_icon.classList.remove('bi-volume-down-fill');
         vol_icon.classList.add('bi-volume-mute-fill');
         vol_icon.classList.remove('bi-volume-up-fill');
     }
-    if (vol.value > 0) {
+    if (vol.value > 0) 
+    {
         vol_icon.classList.add('bi-volume-down-fill');
         vol_icon.classList.remove('bi-volume-mute-fill');
         vol_icon.classList.remove('bi-volume-up-fill');
@@ -252,9 +264,11 @@ back.addEventListener('click', () => {
     if (index < 1) {
         index = Array.from(document.getElementsByClassName('songItem')).length;
     }
+        
     music.src = `audio/${index}.mp3`;
     poster_master_play.src = `img/${index}.jpg`;
     music.play();
+        
     let song_title = songs.filter((ele) => {
         return ele.id == index;
     })
@@ -265,8 +279,8 @@ back.addEventListener('click', () => {
         } = ele;
         title.innerHTML = songName;
     })
+        
     makeAllPlays()
-
 
     document.getElementById(`${index}`).classList.remove('bi-play-fill');
     document.getElementById(`${index}`).classList.add('bi-pause-fill');
@@ -278,12 +292,15 @@ back.addEventListener('click', () => {
 next.addEventListener('click', () => {
     index -= 0;
     index += 1;
+        
     if (index > Array.from(document.getElementsByClassName('songItem')).length) {
         index = 1;
     }
+        
     music.src = `audio/${index}.mp3`;
     poster_master_play.src = `img/${index}.jpg`;
     music.play();
+        
     let song_title = songs.filter((ele) => {
         return ele.id == index;
     })
