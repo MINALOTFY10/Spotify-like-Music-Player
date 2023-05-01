@@ -478,11 +478,7 @@ addButton.addEventListener('click', () => {
 //                     song_title.forEach(ele => {
 //                         let {
 //                             songName
-//                         } = ele;
-//                         title.innerHTML = songName;
-//                     });
-
-//                 }    
+//                         }    
             });
         });
         reader.readAsDataURL(file);
