@@ -337,17 +337,26 @@ right_scroll.addEventListener('click', () => {
     pop_song.scrollLeft += 330;
 })
 
+// left_scroll.addEventListener('click', () => {
+//     pop_song.scrollLeft -= 100;
+// })
+// right_scroll.addEventListener('click', () => {
+//     pop_song.scrollLeft += 100;
+// })
 
 
 //Function to handle the add button click event
 const addButton = document.getElementById('addButton');
-addButton.addEventListener('click', () => {
+
+addButton.addEventListener('click', () => {        
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'audio/*';
-    fileInput.addEventListener('change', () => {
+        
+    fileInput.addEventListener('change', () => {    
         const file = fileInput.files[0];
         const reader = new FileReader();
+            
         reader.addEventListener('load', () => {
             const audioURL = reader.result;
             const audio = new Audio(audioURL);
@@ -383,6 +392,7 @@ addButton.addEventListener('click', () => {
             songContainer.classList.add('song-container');
 
             const playButton = document.createElement('i');
+                
             playButton.classList.add('fas', 'play-button', 'fa-play');
             playButton.id = songId.toString();
             playButton.style.color = '#000000';
@@ -410,6 +420,7 @@ addButton.addEventListener('click', () => {
             // Append the HTML elements to the DOM
             title.appendChild(h5);
             img.appendChild(imgTag);
+                
             songContainer.appendChild(playButton);
             songContainer.appendChild(img);
             songContainer.appendChild(title);
@@ -423,6 +434,7 @@ addButton.addEventListener('click', () => {
             playButton.addEventListener('click', (e) => {
                 index = e.target.id;
                 makeAllPlays();
+                    
                 e.target.classList.remove('fa-play');
                 e.target.classList.add('fa-pause');
 
@@ -450,12 +462,14 @@ addButton.addEventListener('click', () => {
 
                     masterPlay.classList.add('fa-play');
                     masterPlay.classList.remove('fa-remove');
+                        
                     e.target.classList.remove('fa-pause');
                     e.target.classList.add('fa-play');
                 }
 
                 music.addEventListener('ended', () => {
                     masterPlay.classList.add('fa-play');
+                        
                     e.target.classList.remove('fa-pause');
                     e.target.classList.add('fa-play');
                 });
@@ -465,3 +479,4 @@ addButton.addEventListener('click', () => {
     });
     fileInput.click();
 });
+
